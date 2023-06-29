@@ -1,12 +1,12 @@
-var DYNAMIC_CACHE = 'v20230629-1543';
+var DYNAMIC_CACHE = 'v20230629-1542';
 
 var urlsToCache = [
-    '/',
-    '/index.html',
-    '/css/index.css',
-    '/css/snackbar.css',
-    '/engine.js',
-    '/src/app/appManager.js',
+    '',
+    'index.html',
+    'css/index.css',
+    'css/snackbar.css',
+    'engine.js',
+    'src/app/appManager.js',
 ];
 
 self.addEventListener ('install', function (event) {

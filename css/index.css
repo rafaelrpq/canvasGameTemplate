@@ -25,7 +25,7 @@ canvas {
     padding: 1rem;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
-    background-image: url('res/diagonal-noise.png');
+    background-image: url('../res/diagonal-noise.png');
 }
 
 #controles {
