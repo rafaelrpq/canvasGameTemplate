@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#666">
+        <meta charset="utf-8">
+        <meta http-equiv="Cache-Control" content="no-cache">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Expires" content="0">
+
+        <meta name="Description" content="
+            Desenvolvido por: Rafael Prates Quevedo
+            Data: 2023-06-10
+        ">
+
+        <link rel="manifest" href="manifest.json">
+        <link rel="icon" href="res/icons/128.png">
+        <link rel="apple-touch-icon" href="res/icons/192.png">
+
+        <style>
+            @import 'index.css';
+            @import 'snackbar.css';
+        </style>
+        <script src="src/appManager.js" defer></script>
+        <script src="engine.js" defer></script>
+    <body>
+        <canvas></canvas>
+        <div id="controles">
+            <div class="circle">
+                <span></span> <button data-value="ArrowUp">△</button> <span></span>
+                <button data-value="ArrowLeft">◁</button> <span></span> <button data-value="ArrowRight">▷</button>
+                <span></span><button data-value="ArrowDown">▽</button><span></span>
+            </div>
+            <div class="circle">
+                <span></span> <button data-value="x">X</button> <span></span>
+                <button data-value="y">Y</button> <span></span> <button data-value="a">A</button>
+                <span></span> <button data-value="b">B</button> <span></span>
+            </div>
+        </div>
+        <div id="snackbar"><span>Nova versão disponível.</span> <a id="reload">ATUALIZANDO</a></div>
+    </body>
+</html>
