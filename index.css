@@ -108,6 +108,6 @@ canvas {
 
 @media only screen and (hover: none) and (pointer: coarse) and (orientation: landscape) {
     canvas {
-        height: 90vh;
+        height: 100vh;
         width: auto;
     }
