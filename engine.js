@@ -16,6 +16,7 @@ const input = {
         BTN_B : false,
         BTN_X : false,
         BTN_Y : false,
+        START : false,
     },
 
     kbListener : (e) => {
@@ -35,17 +36,21 @@ const input = {
                 input.key.RIGHT = state
                 break;
 
-            case 's' :
+            case 'x' :
                 input.key.BTN_B = state
                 break;
-            case 'd' :
+            case 'c' :
                 input.key.BTN_A = state
                 break;
-            case 'a' :
+            case 's' :
                 input.key.BTN_Y = state
                 break;
-            case 'w' :
+            case 'd' :
                 input.key.BTN_X = state
+                break;
+
+            case 'Enter' :
+                input.key.START = state
                 break;
         }
     },
@@ -72,17 +77,21 @@ const input = {
                     input.key.RIGHT = state
                     break;
 
-                case 'b' :
+                case 'B' :
                     input.key.BTN_B = state
                     break;
-                case 'a' :
+                case 'A' :
                     input.key.BTN_A = state
                     break;
-                case 'y' :
+                case 'Y' :
                     input.key.BTN_Y = state
                     break;
-                case 'x' :
+                case 'X' :
                     input.key.BTN_X = state
+                    break;
+
+                case 'start' :
+                    input.key.START = state
                     break;
             }
         }
@@ -331,6 +340,10 @@ function handlePlayerMultiShotDirection () {
     } else {
         shooting.UP = false;
     }
+
+    if (input.key.START) {
+        console.log ('start')
+    }
 }
 
 
@@ -363,6 +376,11 @@ function handlePlayer () {
         }
     } else {
         isShooting = false;
+    }
+
+    if (input.key.START) {
+        input.key.START = false;
+        console.log ('start')
     }
 }
 

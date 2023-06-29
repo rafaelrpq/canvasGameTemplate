@@ -61,7 +61,7 @@ canvas {
 
 
 
-.circle button, .circle:nth-child(1) span:nth-child(5) {
+.circle button, .circle.direcional span:nth-child(5) {
     width: 4rem;
     height: 4rem;
     display: flex;
@@ -73,7 +73,7 @@ canvas {
     color: rgba(0,0,0,0.6);
 }
 
-.circle:nth-child(1) span:nth-child(5) {
+.circle.direcional span:nth-child(5) {
     border: none;
 }
 
@@ -93,10 +93,27 @@ canvas {
     border-left : none;
 }
 
-.circle:nth-child(2) button {
+.circle.triggers button {
     border-radius: 50%;
     color: white;
     font-weight: bold;
+}
+
+.start {
+    width: 33vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.start button {
+    border-radius: .7rem;
+    width: 10rem;
+    height: 2.4rem;
+    background-color: rgba(64,64,64,0.5);
+    color: #fff;
+    border: .1rem solid;
 }
 
 @media only screen and (hover: none) and (pointer: coarse) {
