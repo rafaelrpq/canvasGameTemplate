@@ -21,38 +21,7 @@ const input = {
 
     kbListener : (e) => {
         let state = (e.type === 'keydown')
-
-        switch (e.key) {
-            case 'ArrowUp' :
-                input.key.UP = state
-                break;
-            case 'ArrowDown' :
-                input.key.DOWN = state
-                break;
-            case 'ArrowLeft' :
-                input.key.LEFT = state
-                break;
-            case 'ArrowRight' :
-                input.key.RIGHT = state
-                break;
-
-            case 'x' :
-                input.key.BTN_B = state
-                break;
-            case 'c' :
-                input.key.BTN_A = state
-                break;
-            case 's' :
-                input.key.BTN_Y = state
-                break;
-            case 'd' :
-                input.key.BTN_X = state
-                break;
-
-            case 'Enter' :
-                input.key.START = state
-                break;
-        }
+        inputParser (e.key, state)
     },
 
     touchListener : (e) => {
@@ -63,37 +32,7 @@ const input = {
 
         if (e.target.tagName.toLowerCase() === 'button') {
             button = e.target;
-            switch (button.getAttribute ('data-value')) {
-                case 'ArrowUp' :
-                    input.key.UP = state
-                    break;
-                case 'ArrowDown' :
-                    input.key.DOWN = state
-                    break;
-                case 'ArrowLeft' :
-                    input.key.LEFT = state
-                    break;
-                case 'ArrowRight' :
-                    input.key.RIGHT = state
-                    break;
-
-                case 'B' :
-                    input.key.BTN_B = state
-                    break;
-                case 'A' :
-                    input.key.BTN_A = state
-                    break;
-                case 'Y' :
-                    input.key.BTN_Y = state
-                    break;
-                case 'X' :
-                    input.key.BTN_X = state
-                    break;
-
-                case 'start' :
-                    input.key.START = state
-                    break;
-            }
+            inputParser (button.getAttribute ('data-value'), state)
         }
 
     },
@@ -101,6 +40,40 @@ const input = {
     handler : null,
 }
 
+
+function inputParser (handle, state) {
+    switch (handle) {
+        case 'ArrowUp' :
+            input.key.UP = state
+            break;
+        case 'ArrowDown' :
+            input.key.DOWN = state
+            break;
+        case 'ArrowLeft' :
+            input.key.LEFT = state
+            break;
+        case 'ArrowRight' :
+            input.key.RIGHT = state
+            break;
+
+        case 'x' :
+            input.key.BTN_B = state
+            break;
+        case 'c' :
+            input.key.BTN_A = state
+            break;
+        case 's' :
+            input.key.BTN_Y = state
+            break;
+        case 'd' :
+            input.key.BTN_X = state
+            break;
+
+        case 'Enter' :
+            input.key.START = state
+            break;
+    }
+}
 
 document.addEventListener ('keydown',    input.kbListener)
 document.addEventListener ('keyup',      input.kbListener)
@@ -348,6 +321,12 @@ function handlePlayerMultiShotDirection () {
 
 
 function handlePlayer () {
+
+    for (key in input.key) {
+        if (input.key[key]) {
+            navigator.vibrate (10)
+        }
+    }
 
     if (input.key.UP) {
         player.vel.y = -move
