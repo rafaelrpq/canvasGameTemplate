@@ -3,8 +3,10 @@ const ctx    = canvas.getContext ('2d')
 
 ctx.imageSmoothingEnabled = false
 
-canvas.width  = 1024
-canvas.height = 576
+// canvas.width  = 1024
+// canvas.height = 576
+canvas.width  = 640
+canvas.height = 480
 
 const input = {
     key : {
@@ -12,11 +14,11 @@ const input = {
         DOWN  : false,
         LEFT  : false,
         RIGHT : false,
-        BTN_A : false,
-        BTN_B : false,
+        BTN_C : false,
         BTN_X : false,
-        BTN_Y : false,
-        START : false,
+        BTN_D : false,
+        BTN_S : false,
+        ENTER : false,
     },
 
     kbListener : (e) => {
@@ -57,20 +59,20 @@ function inputParser (handle, state) {
             break;
 
         case 'x' :
-            input.key.BTN_B = state
+            input.key.BTN_X = state
             break;
         case 'c' :
-            input.key.BTN_A = state
+            input.key.BTN_C = state
             break;
         case 's' :
-            input.key.BTN_Y = state
+            input.key.BTN_S = state
             break;
         case 'd' :
-            input.key.BTN_X = state
+            input.key.BTN_D = state
             break;
 
         case 'Enter' :
-            input.key.START = state
+            input.key.ENTER = state
             break;
     }
 }
@@ -278,7 +280,7 @@ function handlePlayerMultiShotDirection () {
         player.vel.x = 0
     }
 
-    if (input.key.BTN_B) {
+    if (input.key.BTN_X) {
         if (shooting.DOWN == false) {
             shooting.DOWN = true;
             player.shoot (direction.DOWN)
@@ -287,7 +289,7 @@ function handlePlayerMultiShotDirection () {
         shooting.DOWN = false;
     }
 
-    if (input.key.BTN_Y) {
+    if (input.key.BTN_S) {
         if (shooting.LEFT == false) {
             shooting.LEFT = true;
             player.shoot (direction.LEFT)
@@ -296,7 +298,7 @@ function handlePlayerMultiShotDirection () {
         shooting.LEFT = false;
     }
 
-    if (input.key.BTN_A) {
+    if (input.key.BTN_C) {
         if (shooting.RIGHT == false) {
             shooting.RIGHT = true;
             player.shoot (direction.RIGHT)
@@ -305,7 +307,7 @@ function handlePlayerMultiShotDirection () {
         shooting.RIGHT = false;
     }
 
-    if (input.key.BTN_X) {
+    if (input.key.BTN_D) {
         if (shooting.UP == false) {
             shooting.UP = true;
             player.shoot (direction.UP)
@@ -314,19 +316,13 @@ function handlePlayerMultiShotDirection () {
         shooting.UP = false;
     }
 
-    if (input.key.START) {
-        console.log ('start')
+    if (input.key.ENTER) {
+        console.log ('enter')
     }
 }
 
 
 function handlePlayer () {
-
-    for (key in input.key) {
-        if (input.key[key]) {
-            navigator.vibrate (10)
-        }
-    }
 
     if (input.key.UP) {
         player.vel.y = -move
@@ -348,7 +344,7 @@ function handlePlayer () {
         player.vel.x = 0
     }
 
-    if (input.key.BTN_B) {
+    if (input.key.BTN_X) {
         if (isShooting == false) {
             isShooting = true;
             player.shoot (player.direction)
@@ -357,22 +353,23 @@ function handlePlayer () {
         isShooting = false;
     }
 
-    if (input.key.START) {
-        input.key.START = false;
+    if (input.key.ENTER) {
+        input.key.ENTER = false;
         console.log ('start')
     }
 }
 
+// input.handler = handlePlayerMultiShotDirection
 input.handler = handlePlayer
 
 function gunMeter () {
     let percent = (shotList.length / shotLimit) * 100;
     /*caixa fundo*/
     ctx.fillStyle = 'rgba(0,0,0,0.3)'
-    ctx.fillRect (12, 12, 10, 102)
+    ctx.fillRect (11, 11, 13, 104)
     /*caixa sombra*/
     ctx.strokeStyle = '#000'
-    ctx.strokeRect (11, 11, 14, 106)
+    ctx.strokeRect (9, 9, 16, 108)
     /*caixa borda*/
     ctx.lineWidth = 2
     ctx.strokeStyle = '#fff'
@@ -384,9 +381,15 @@ function gunMeter () {
     ctx.fillRect (13, 13 + percent, 8, 100 - percent )
 }
 
+
+
+let background = new Image ();
+background.src = 'res/background.png'
+
 function main () {
     requestAnimationFrame (main);
     ctx.clearRect (0, 0, canvas.width, canvas.height)
+    ctx.drawImage (background, 0, 0, canvas.width, canvas.height)
 
     player.move ()
     player.draw ();

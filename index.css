@@ -12,19 +12,20 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #666;
+    background-color: #666;
     font-size: 1.6rem;
     font-family: arial;
 }
 
 canvas {
-    border: 0px solid #333;
-    border-radius: 0;
-    background: url('res/diagonal-noise.png');
-    width: 85vw;
+    border: .1rem solid #333;
+    border-radius: .5rem;
+    width: 100vw;
     height: auto;
+    padding: 1rem;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
+    background-image: url('res/diagonal-noise.png');
 }
 
 #controles {
@@ -69,6 +70,7 @@ canvas {
     justify-content: center;
     background-color: rgb(100 100 150 / 30%);
     border: 0.2rem solid rgba(0,0,0,0.3);
+    /*border-radius: .5rem;*/
     margin: -1px;
     color: rgba(0,0,0,0.6);
 }
@@ -79,18 +81,22 @@ canvas {
 
 .circle button[data-value='ArrowUp'] {
     border-bottom : none;
+    border-radius: .5rem .5rem 0 0;
 }
 
 .circle button[data-value='ArrowDown'] {
     border-top : none;
+    border-radius: 0 0 .5rem .5rem;
 }
 
 .circle button[data-value='ArrowLeft'] {
     border-right : none;
+    border-radius: .5rem 0 0 .5rem;
 }
 
 .circle button[data-value='ArrowRight'] {
     border-left : none;
+    border-radius: 0 .5rem .5rem 0;
 }
 
 .circle.triggers button {
@@ -129,3 +135,17 @@ canvas {
         width: auto;
     }
 }
+
+@media only screen and (orientation: landscape) and (not (aspect-ratio: 4/3)){
+    canvas {
+        height: 100vh;
+        width: auto;
+    }
+}
+
+/*@media only screen and (orientation: portrait) and (not (aspect-ratio: 3/4)){*/
+/*    canvas {*/
+/*        width: 100vw;*/
+/*        height: auto;*/
+/*    }*/
+/*}*/
