@@ -1,14 +1,19 @@
 let newWorker;
 
 function showUpdateBar() {
-    let snackbar = document.getElementById('snackbar');
+    let snackbar = document.createElement ('div');
+    snackbar.setAttribute ('id', 'snackbar');
+    snackbar.innerHTML = '<span>Nova versão disponível.</span> <a href="#" id="reload">ATUALIZANDO</a>'
+    document.body.appendChild (snackbar);
     snackbar.className = 'show';
+    console.log ('Updating PWA...')
+    // newWorker.postMessage ({ action: 'skipWaiting' });
 }
 
 // The click event on the pop up notification
-document.getElementById ('reload').addEventListener ('click', function() {
-    newWorker.postMessage ({ action: 'skipWaiting' });
-});
+// document.getElementById ('reload').addEventListener ('click', function() {
+//     newWorker.postMessage ({ action: 'skipWaiting' });
+// });
 
 if ('serviceWorker' in navigator) {
 

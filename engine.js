@@ -345,6 +345,7 @@ function handlePlayer () {
     }
 
     if (input.key.BTN_X) {
+        navigator.vibrate (10)
         if (isShooting == false) {
             isShooting = true;
             player.shoot (player.direction)
