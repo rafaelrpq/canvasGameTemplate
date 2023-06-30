@@ -1,4 +1,4 @@
-var DYNAMIC_CACHE = 'v20230630-1001';
+var DYNAMIC_CACHE = 'v20230630-1054';
 
 var urlsToCache = [
     '',
